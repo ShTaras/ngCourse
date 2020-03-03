@@ -1,0 +1,55 @@
+.todoList {
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    padding: 15px 1.5% 0;
+  }
+
+  &__find {
+    height: 35px;
+    max-width: 660px;
+    min-width: 60px;
+    width: 100%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #9c9c9c;
+    outline: none;
+    background-image: url(/assets/img/searchicon.png);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding: 10px 5px 10px 20px;
+    text-indent: 20px;
+  }
+
+  &__sortPriority {
+    width: 30px;
+    margin: 0 0.7%;
+    padding: 0 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__sortDate {
+    width: 30px;
+    padding: 0 40px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__btnSortCheck {
+    width: 36px;
+    height: 36px;
+    margin: 0 5px;
+    padding: 0 50px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
