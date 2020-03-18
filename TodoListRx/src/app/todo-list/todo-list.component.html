@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="todoList" id="todoList">
+        <app-header></app-header>
+        <!-- <app-todoitem *ngFor="let todo of todoSvc.todosSortered()" [todo] = todo></app-todoitem> -->
+        <app-todoitem *ngFor="let todo of items | async" [todo] = todo></app-todoitem>
+        
+    </div>
+    <div class="footer">
+        COUNT:
+        COMPLETED: 
+      </div>
+</div>

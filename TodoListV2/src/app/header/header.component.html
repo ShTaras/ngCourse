@@ -1,0 +1,9 @@
+<div class="todoList__header">
+    <h1 class="todoList__title">TODO LIST</h1>
+    <div class="todoList__addTask">
+        <input (keyup.enter)=add() [(ngModel)]="todoText" type="text" class="todoList__taskText" placeholder="Task" maxlength="256">
+        <button (click)=add() [disabled]="todoText===''" class="todoList__btnAdd" id="btnAdd">ADD</button>
+    </div>
+</div>
+<app-action></app-action>
+

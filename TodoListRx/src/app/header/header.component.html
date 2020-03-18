@@ -1,0 +1,13 @@
+<div class="todoList__header">
+    <h1 class="todoList__title">TODO LIST</h1>
+    <div class="todoList__addTask">
+        <input (keyup.enter)=addTodo() [(ngModel)]="todoText" type="text" class="todoList__taskText" id="taskText" placeholder="Task" maxlength="256">
+        <button (click)=addTodo() class="todoList__btnAdd" id="btnAdd">ADD</button>
+    </div>
+</div>
+<div class="todoList__sort">
+    <img class="todoList__sortDate" src="assets/img/sortDate.png" alt="sort" id="sortDate">
+    <img  class="todoList__sortPriority" src="assets/img/sortPriority.png" alt="priority" id="sortPriority">
+    <input type="search" class="todoList__find" id="inputSearch" maxlength="256">
+    <img (click)= todoSvc.todosSort() class="todoList__btnSortCheck" src="assets/img/icon.png" alt="sort" id="sortCheck">
+</div>

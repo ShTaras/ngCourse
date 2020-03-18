@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <div class="todoList">
+	
+        <app-header (onAdd)="add($event)"></app-header>
+        <app-task-container [items]="todos"></app-task-container>
+    </div>
+</div>

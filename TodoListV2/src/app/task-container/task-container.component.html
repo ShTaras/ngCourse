@@ -1,0 +1,5 @@
+<app-task *ngFor="let item of items; let indexItem = index" [task]="item" (onChange)="onChange($event, indexItem)">
+    
+</app-task>
+<app-delete *ngIf="isDialogDeleteVisible" (isConfirmedDelete)="closeDialogDelete($event)"></app-delete>
+<app-edit *ngIf="isDialogEditVisible" (isConfirmedEdit)="closeDialogEdit($event)"></app-edit>
