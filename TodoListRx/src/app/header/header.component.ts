@@ -9,8 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   todoText: string;
-
-  constructor(public todoSvc: TodoServiceService ) { }
+  searchText: string;
+  constructor(public todoSvc: TodoServiceService) { }
 
   ngOnInit(): void {
     this.todoText = '';

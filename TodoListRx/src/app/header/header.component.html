@@ -6,8 +6,8 @@
     </div>
 </div>
 <div class="todoList__sort">
-    <img class="todoList__sortDate" src="assets/img/sortDate.png" alt="sort" id="sortDate">
-    <img  class="todoList__sortPriority" src="assets/img/sortPriority.png" alt="priority" id="sortPriority">
-    <input type="search" class="todoList__find" id="inputSearch" maxlength="256">
-    <img (click)= todoSvc.todosSort() class="todoList__btnSortCheck" src="assets/img/icon.png" alt="sort" id="sortCheck">
+    <img (click) = "todoSvc.todosSort('date')" class="todoList__sortDate" src="assets/img/sortDate.png" alt="sort" id="sortDate">
+    <img (click) = "todoSvc.todosSort('importance')" class="todoList__sortPriority" src="assets/img/sortPriority.png" alt="priority" id="sortPriority">
+    <input [(ngModel)] = "searchText" (ngModelChange)="todoSvc.search(searchText)" type="search" class="todoList__find" id="inputSearch" maxlength="256">
+    <img (click)= "todoSvc.todosSort('done')" class="todoList__btnSortCheck" src="assets/img/icon.png" alt="sort" id="sortCheck">
 </div>

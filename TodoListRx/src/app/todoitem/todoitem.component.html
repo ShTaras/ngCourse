@@ -1,4 +1,4 @@
-<div  class="todoList__tasks " id="tasks">  
+<div  class="todoList__tasks" >  
     <div [ngClass]="{'task-complete': todo.done}" class="task">
         <div class="task__info">
             <div class="task__clock">
@@ -13,10 +13,10 @@
         </div>
         <div class="task__text">{{todo.text}}</div>
         <div class="task__buttons">
-            <img class="task__btnEdit taskBtn" src="assets/img/btnEdit.png" alt="">
+            <img (click)= modalSvc.showDialogEdit(todo) class="task__btnEdit taskBtn" src="assets/img/btnEdit.png" alt="">
     
             <img (click)=todoSvc.done(todo) class="task__btnCheck taskBtn" src="assets/img/bthCheck.png" alt="">
-            <img (click)= todoSvc.deleteTodo(todo.id) class="task__btnDelete taskBtn" src="assets/img/btnDelete.png" alt="" id="delete">
+            <img (click)= modalSvc.showDialogDelete(todo) class="task__btnDelete taskBtn" src="assets/img/btnDelete.png" alt="" id="delete">
         </div>
     </div>
 

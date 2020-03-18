@@ -1,10 +1,12 @@
-import { TodoItem } from './../interfaces/todo-item';
+
 import { TodoServiceService } from './../services/todo-service.service';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { trigger, transition, style, animate } from '@angular/animations';
+
 import { Observable } from 'rxjs';
+import{ModalDialogService} from './../services/modal-dialog.service'
 
 @Component({
   selector: 'app-todo-list',
@@ -26,16 +28,10 @@ export class TodoListComponent implements OnInit {
 
   items: Observable<any>;
 
-  constructor(public todoSvc: TodoServiceService) { }
+  constructor(public todoSvc: TodoServiceService,public modalSvc: ModalDialogService) { }
 
   ngOnInit(): void {
-
-
     this.items = this.todoSvc.items;
-
-  
-
-
   }
   
 

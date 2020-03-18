@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\modal-dialog",
+    "\\src\\app\\modal-dialog\\delete",
+    "\\src\\app\\modal-dialog\\edit",
+    "\\src\\app\\task",
+    "\\src\\app\\task-container"
+  ],
+  "SelectedNode": "\\src\\app\\task-container",
+  "PreviewInSolutionExplorer": false
+}

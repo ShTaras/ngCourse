@@ -3,6 +3,7 @@ import { TodoItem } from './../interfaces/todo-item';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, from } from 'rxjs'
 import { map, filter } from 'rxjs/operators'
+import { MetaService } from './meta.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,6 @@ export class TodoServiceService {
   private subj: BehaviorSubject<any> = new BehaviorSubject([]);
   private todos: Array<TodoItem> = [];
 
-  private sort: string = 'all'
-  private countTodo: number = 0;
-  private countDoneTodo: number = 0;
-
   constructor(private storageSvc: StorageService) {
     this.load();
   }
@@ -23,6 +20,7 @@ export class TodoServiceService {
   get items() {
     return this.subj.asObservable();
   }
+
   load() {
     this.todos = this.storageSvc.load();
     this.subj.next(this.todos);
@@ -32,9 +30,6 @@ export class TodoServiceService {
   }
 
   addTodo(todoText: string): void {
-    if (todoText.trim().length === 0) {
-      return;
-    }
     this.todos.unshift({
       date: new Date(),
       importance: 1,
@@ -51,7 +46,10 @@ export class TodoServiceService {
   deleteTodo(id: string) {
     this.todos = this.todos.filter(todo => todo.id !== id);
     this.subj.next(this.todos);
-
+  }
+  editTodo(todo: TodoItem, newText) {
+    todo.text = newText;
+    this.subj.next(this.todos);
   }
   upImportance(todo: TodoItem) {
     if (todo.importance < 5) todo.importance++;
@@ -60,20 +58,28 @@ export class TodoServiceService {
   downImportance(todo: TodoItem) {
     if (todo.importance > 1) todo.importance--;
     this.subj.next(this.todos);
-
   }
   done(todo: TodoItem) {
     todo.done = !todo.done;
     this.subj.next(this.todos);
   }
-
-  todosSort() {
-
-
-    console.log('++');
-    // return this.todos.sort((prevTodo, nextTodo) => Number(nextTodo.done) - Number(prevTodo.done));
-   
-    //  return this.to
-  
+  todosSort(sort:string) {
+    switch (sort) {
+      case 'done':
+        this.todos = this.todos.sort((prevTodo, nextTodo) => Number(nextTodo.done) - Number(prevTodo.done));
+        break;
+      case 'importance':
+        this.todos = this.todos.sort((prevTodo, nextTodo) => nextTodo.importance - prevTodo.importance);
+        break;
+      case 'date':
+        this.todos = this.todos.sort((prevTodo, nextTodo) => Number(new Date(nextTodo.date)) - Number(new Date(prevTodo.date)));
+        console.log(this.todos);
+        break;
+      default:
+        break;
+    }
+  }
+  search(text:string) {
+    this.subj.next(this.todos.filter(todo => todo.text.indexOf(text) >= 0));
   }
 }
